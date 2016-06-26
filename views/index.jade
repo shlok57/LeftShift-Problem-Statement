@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	.container-fluid
+		h1 Weather App
+
+	.input_area
+		input(type="text" id="city_name" class="input-lg" placeholder="Enter city name here...")
+		button#add_city.btn.btn-primary.btn-lg Add
+		br
+		p(id="error")
+
+	.row(id='display_area')
+
+
+block body_end
+  
