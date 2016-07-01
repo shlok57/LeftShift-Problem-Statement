@@ -46,7 +46,14 @@ $('#add_city').click(function () {
 			$('#error').html(data);	
 		}
 	});
-	$('#error').val('');
+	$('#error').html('');
+});
+
+$('body').on("click",'#suggestion',function () {	
+	var suggested_city = $('#suggestion').text();
+	$city_name = stringifyMe(suggested_city);
+	$('#city_name').val($city_name);
+	$('#add_city').trigger('click');
 });
 
 function getCityWeather(data){
@@ -73,7 +80,7 @@ function displayWeather(data, city_name){
 		}
 	}
 	else {
-		$('#error').html('Check the city name');
+		$('#error').html('Check the city name. Did you mean <span id="suggestion">' + data.city.name + '</span>?');
 	}
 }
 

@@ -1,10 +1,10 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
 }
 
 .my_weather {
@@ -37,4 +37,11 @@ a {
 
 #add_city {
 	margin-right: 20px;
+}
+
+#suggestion {
+	cursor: pointer;
+	font-style: italic;
+	color: grey;
+	text-decoration: underline;
 }
