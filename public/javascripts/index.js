@@ -16,12 +16,12 @@ $('#cur_city').click(function(){
 function getCurrentCity(position) {
 	var lat = position.coords.latitude;
 	var long = position.coords.longitude;
-	$.getJSON("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + long + "&mode=json&cnt=14&appid=75e843de569fb57a783c2e73fd9a7bb5", getCurrentCityWeather);
+	$.getJSON("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + long + "&mode=json&units=metric&cnt=14&appid=75e843de569fb57a783c2e73fd9a7bb5", getCurrentCityWeather);
 }
 
 $('#add_city').click(function () {	
 	var $city_name = $('#city_name').val();
-	$city_name = capitalizeMe($city_name);
+	$city_name = stringifyMe($city_name);
 	$('#city_name').val($city_name);
 	$.ajax({
 		url: '/get_data',
@@ -63,7 +63,7 @@ function getCurrentCityWeather(data){
 }
 
 function displayWeather(data, city_name){
-	if(data.city.name == city_name){
+	if(stringifyMe(data.city.name) == city_name){
 		if(city_name_list.indexOf(city_name) == -1){
 			city_name_list.push(city_name);
 			append_data(data);
@@ -77,7 +77,8 @@ function displayWeather(data, city_name){
 	}
 }
 
-function capitalizeMe(val){
+function stringifyMe(val){
+	val = val.replace(/\s+/g, '');
 	return val.charAt(0).toUpperCase()+val.substr(1).toLowerCase();
 }
 

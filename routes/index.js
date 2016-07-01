@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/get_data', function(request, response){
 	var city_name = request.body.city_name;
-	console.log('city_name'+city_name);
 	var options = {
 		host : 'api.openweathermap.org',
 		path : '/data/2.5/forecast/daily?q=' + city_name + '&mode=json&units=metric&cnt=14&appid=75e843de569fb57a783c2e73fd9a7bb5',
@@ -21,11 +20,9 @@ router.post('/get_data', function(request, response){
 		var body = "";
 		res.on('data', function(data) {
 			body += data;
-			console.log('Data'+data);
 		});
 		res.on('end', function() {
 			maybe = JSON.parse(body);
-			console.log(maybe);
 			var data1 = {'success' : maybe}
 			response.send(data1);
 		});
